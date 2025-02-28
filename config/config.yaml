@@ -1,0 +1,12 @@
+Env: "dev"
+
+DatabaseSettings:
+  DatabaseURI: "root:Atonng...@tcp(localhost:3306)/go_database?parseTime=True&loc=Local"
+  DatabaseName: "go_database"
+  Username: "root"
+  Password: "Atonng..."
+
+
+JwtSettings:
+  SecretKey: "golang-tech-stack"
+
