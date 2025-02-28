@@ -7,9 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//TODO: refactor methods
+// TODO: refactor methods
 var (
-	// 默认页数
+	// 默认每页显示的记录数
 	DefaultPageSize = 100
 	// 最大页数
 	MaxPageSize = 1000
@@ -21,14 +21,14 @@ var (
 
 // 分页结构体
 type Pages struct {
-	Page       int         `json:"page"`
-	PageSize   int         `json:"pageSize"`
+	Page       int         `json:"page"`     // 当前页码
+	PageSize   int         `json:"pageSize"` // 每页记录数
 	PageCount  int         `json:"pageCount"`
 	TotalCount int         `json:"totalCount"`
 	Items      interface{} `json:"items"`
 }
 
-// 实例化分页结构体
+// 实例化分页结构体,New 函数用于创建一个新的 Pages 实例，根据传入的当前页码、每页记录数和总记录数计算分页信息。
 func New(page, pageSize, total int) *Pages {
 	if pageSize <= 0 {
 		pageSize = DefaultPageSize

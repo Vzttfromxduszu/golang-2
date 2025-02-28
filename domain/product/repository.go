@@ -41,8 +41,8 @@ func (r *Repository) SearchByString(str string, pageIndex, pageSize int) ([]Prod
 	convertedStr := "%" + str + "%"
 	var count int64
 	r.db.Where("IsDeleted = ?", false).Where(
-		"Name LIKE ? OR SKU Like ?", convertedStr,
-		convertedStr).Offset((pageIndex - 1) * pageSize).Limit(pageSize).Find(&products).Count(&count)
+		"Name LIKE ? OR SKU LIKE ? `Dsec` LIKE ?", convertedStr,
+		convertedStr, convertedStr).Offset((pageIndex - 1) * pageSize).Limit(pageSize).Find(&products).Count(&count)
 
 	return products, int(count)
 }
